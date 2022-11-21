@@ -153,6 +153,6 @@
   "FunctionAppName": {
     "type": "string",
     "value": "[variables('functionAppName')]"
-  },
-}
+  }
+ }
 }
