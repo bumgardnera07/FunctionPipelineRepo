@@ -30,7 +30,7 @@ steps:
   inputs:
     azureSubscription: 'gebumgar (2eb04934-401d-4233-82c4-6c80ab35d49c)'
     appType: 'functionApp'
-    appName: '$(CreateFunctionApp.ArmDeploymentOutputs.functionAppName.value)'
+    appName: '$(ArmDeploymentOutputs.functionAppName.value)'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
     deploymentMethod: 'auto'
 - task: AzureResourceManagerTemplateDeployment@3
