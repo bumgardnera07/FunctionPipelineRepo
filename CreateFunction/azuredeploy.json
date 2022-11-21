@@ -148,5 +148,11 @@
         "Request_Source": "rest"
       }
     }
-  ]
+  ],
+  "outputs": {
+  "FunctionAppName": {
+    "type": "string",
+    "value": "[variables('functionAppName')]"
+  },
+}
 }
