@@ -12,6 +12,7 @@ pool:
 steps:
 
 - task: AzureResourceManagerTemplateDeployment@3
+  name: CreateFunctionApp
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: 'AzureFunction-conn'
@@ -24,6 +25,14 @@ steps:
     overrideParameters:
     deploymentMode: 'Complete'
     deploymentName: 'DeployPipelineTemplate'
+    deploymentOutputs: 'ARMDeploymentOutputs'
+- task: AzureFunctionApp@1
+  inputs:
+    azureSubscription: 'gebumgar (2eb04934-401d-4233-82c4-6c80ab35d49c)'
+    appType: 'functionApp'
+    appName: '$(CreateFunctionApp.ArmDeploymentOutputs)'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
