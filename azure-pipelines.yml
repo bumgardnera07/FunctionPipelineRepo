@@ -27,12 +27,16 @@ steps:
     deploymentName: 'DeployPipelineTemplate'
     deploymentOutputs: 'ARMDeploymentOutputs'
 - task: AzureCLI@2
+  retryCountOnTaskFailure: 10
   inputs:
     azureSubscription: 'gebumgar (2eb04934-401d-4233-82c4-6c80ab35d49c)'
-    scriptType: 'pscore'
+    scriptType: 'Bash'
     scriptLocation: 'inlineScript'
     inlineScript: 'az functionapp deployment source config -g ResourceGroupGABFunctionDeploy -n $(ArmDeploymentOutputs.functionAppName.value) --repo-url https://github.com/bumgardnera07/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-JavaScript'
     addSpnToEnvironment: true
+- task: Delay@1
+  inputs:
+    delayForMinutes: '10'
 - task: AzureFunctionApp@1
   retryCountOnTaskFailure: 10
   inputs:
