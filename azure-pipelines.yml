@@ -21,6 +21,6 @@ steps:
     location: 'East US'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/bumgardnera07/FunctionPipelineRepo/main/CreateFunction/azuredeploy.json'
-    overrideParameters: '-appInsightsLocation [resourceGroup().location]'
+    overrideParameters:
     deploymentMode: 'Complete'
     deploymentName: 'DeployPipelineTemplate'
