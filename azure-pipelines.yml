@@ -30,10 +30,9 @@ steps:
   retryCountOnTaskFailure: 10
   inputs:
     azureSubscription: 'AzureFunction-conn'
-    scriptType: 'bash'
+    scriptType: 'pscore'
     scriptLocation: 'inlineScript'
     inlineScript: 'az functionapp deployment source config -g ResourceGroupGABFunctionDeploy -n $(ArmDeploymentOutputs.functionAppName.value) --repo-url https://github.com/bumgardnera07/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-JavaScript'
-    addSpnToEnvironment: true
 - task: AzureFunctionApp@1
   retryCountOnTaskFailure: 10
   inputs:
