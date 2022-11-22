@@ -10,6 +10,24 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- bash: |
+    if [ -f extensions.csproj ]
+    then
+        dotnet build extensions.csproj --output ./bin
+    fi
+    npm install 
+    npm run build --if-present
+    npm prune --production
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    artifactName: 'drop'
 
 - task: AzureResourceManagerTemplateDeployment@3
   name: CreateFunctionApp
@@ -32,7 +50,7 @@ steps:
     azureSubscription: 'AzureFunction-conn'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    inlineScript: 'az login'
+    inlineScript: 'az functionapp deployment source config-zip  -g ResourceGroupGABFunctionDeploy -n $(ArmDeploymentOutputs.functionAppName.value)'
 - task: AzureFunctionApp@1
   retryCountOnTaskFailure: 10
   inputs:
