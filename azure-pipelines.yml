@@ -15,7 +15,6 @@ steps:
     targetType: 'inline'
     script: |
       wget https://raw.githubusercontent.com/bumgardnera07/azure-functions-templates/dev/Functions.Templates/Templates/HttpTrigger-JavaScript/function.json
-      |
       wget https://raw.githubusercontent.com/bumgardnera07/azure-functions-templates/dev/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js
 - task: ArchiveFiles@2
   displayName: "Archive files"
