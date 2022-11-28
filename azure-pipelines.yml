@@ -60,8 +60,7 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az webapp config set --name $(ArmDeploymentOutputs.functionAppName.value) -g ResourceGroupGABFunctionDeploy --generic-configurations '{"virtualApplications":[{"physicalPath":"site/wwwroot/PORTAL","preloadEnabled":true,"virtualDirectories":[{"physicalPath":"site/BCTS/BCTS/Excel","virtualPath":"/Excel"}],"virtualPath":"/"},{"physicalPath":"site/wwwroot/DSL","preloadEnabled":false,"virtualDirectories":null,"virtualPath":"/iDSL/"}]}'
-      az webapp config set --name $(ArmDeploymentOutputs.functionAppName.value) -g ResourceGroupGABFunctionDeploy --generic-configurations '{"virtualApplications":[{"physicalPath":"site/wwwroot/BCTS","preloadEnabled":true,"virtualDirectories":[{"physicalPath":"site/BCTS/BCTS/Excel","virtualPath":"/Excel"}],"virtualPath":"/"},{"physicalPath":"site/wwwroot/ADSL","preloadEnabled":false,"virtualDirectories":null,"virtualPath":"/ADSL"},{"physicalPath":"site/wwwroot/ATM","preloadEnabled":false,"virtualDirectories":null,"virtualPath":"/ATM"},{"physicalPath":"site/wwwroot/IO","preloadEnabled":false,"virtualDirectories":null,"virtualPath":"/IOF"},{"physicalPath":"site/wwwroot/METRO_ETHERNET","preloadEnabled":false,"virtualDirectories":null,"virtualPath":"/METRO_ETHERNET"},{"physicalPath":"site/wwwroot/ROUTER","preloadEnabled":false,"virtualDirectories":null,"virtualPath":"/ROUTER"}]}'
+      az webapp config set --name $(ArmDeploymentOutputs.functionAppName.value) -g ResourceGroupGABFunctionDeploy --generic-configurations '{"virtualApplications":[{"physicalPath":"site/wwwroot/PORTAL","preloadEnabled":true,"virtualDirectories":[{"physicalPath":"site/BCTS/BCTS/Excel","virtualPath":"/Excel"}],"virtualPath":"/"},{"physicalPath":"site/wwwroot/DSL","preloadEnabled":false,"virtualDirectories":null,"virtualPath":"/iDSL"}]}'
           
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
