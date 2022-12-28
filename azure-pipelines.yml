@@ -47,6 +47,7 @@ steps:
     inlineScript: 'az functionapp deployment source config-zip --src $(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip  -g ResourceGroupGABFunctionDeploy -n $(ArmDeploymentOutputs.functionAppName.value)'
 
 - task: AzureFunctionApp@1
+  retryCountOnTaskFailure: 10
   inputs:
     azureSubscription: 'AzureFunction-conn'
     appType: 'functionApp'
