@@ -59,7 +59,7 @@ steps:
     script: |
       # Write your commands here
       
-      sleep 30
+      sleep 299
 - task: AzureFunctionApp@1
   name: PipeTask2
   continueOnError: true
@@ -77,7 +77,7 @@ steps:
     script: |
       # Write your commands here
       
-      sleep 60
+      sleep 299
 - task: AzureFunctionApp@1
   retryCountOnTaskFailure: 10
   continueOnError: true
@@ -94,7 +94,41 @@ steps:
     script: |
       # Write your commands here
       
-      sleep 120
+      sleep 299
+- task: AzureFunctionApp@1
+  retryCountOnTaskFailure: 10
+  continueOnError: true
+  inputs:
+    azureSubscription: 'AzureFunction-conn'
+    appType: 'functionApp'
+    appName: '$(ArmDeploymentOutputs.functionAppName.value)'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      sleep 299
+- task: AzureFunctionApp@1
+  retryCountOnTaskFailure: 10
+  continueOnError: true
+  inputs:
+    azureSubscription: 'AzureFunction-conn'
+    appType: 'functionApp'
+    appName: '$(ArmDeploymentOutputs.functionAppName.value)'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      sleep 299
 - task: AzureFunctionApp@1
   retryCountOnTaskFailure: 10
   continueOnError: true
