@@ -26,11 +26,11 @@ steps:
     azureResourceManagerConnection: 'AzureFunction-conn'
     subscriptionId: '2eb04934-401d-4233-82c4-6c80ab35d49c'
     action: 'Create Or Update Resource Group'
-    resourceGroupName: 'ResourceGroupGABFunctionDeploy'
+    resourceGroupName: 'ResourceGroupGABFunctionDeploy$(Build.BuildId)'
     location: 'East US'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/bumgardnera07/FunctionPipelineRepo/main/CreateFunction/azuredeploy.json'
-    overrideParameters:
+    overrideParameters: '-appName $(Build.BuildId) '
     deploymentMode: 'Complete'
     deploymentName: 'DeployPipelineTemplate'
     deploymentOutputs: 'ARMDeploymentOutputs'
