@@ -34,10 +34,10 @@ steps:
     deploymentMode: 'Complete'
     deploymentName: 'DeployPipelineTemplate'
     deploymentOutputs: 'ARMDeploymentOutputs'
-    addSpnToEnvironment: 
+
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
     ArtifactName: 'drop'
     publishLocation: 'Container'
   
