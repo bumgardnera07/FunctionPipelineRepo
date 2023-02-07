@@ -128,7 +128,7 @@ steps:
     script: |
       # Write your commands here
       
-      sleep 299
+      sleep 600
 - task: AzureFunctionApp@1
   retryCountOnTaskFailure: 10
   continueOnError: true
