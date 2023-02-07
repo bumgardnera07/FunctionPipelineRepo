@@ -39,6 +39,6 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
-    ArtifactName: 'drop'
+    ArtifactName: 'drop$(Build.BuildId)'
     publishLocation: 'Container'
   
