@@ -30,7 +30,7 @@ steps:
     location: 'East US'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/bumgardnera07/FunctionPipelineRepo/main/CreateFunction/azuredeploy.json'
-    overrideParameters: '-appName $(Build.BuildId) '
+    overrideParameters: '-appName GABFUNCAPP$(Build.BuildId) '
     deploymentMode: 'Complete'
     deploymentName: 'DeployPipelineTemplate'
     deploymentOutputs: 'ARMDeploymentOutputs'
