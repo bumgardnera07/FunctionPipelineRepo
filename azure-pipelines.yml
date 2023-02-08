@@ -3,9 +3,9 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 stages:
-  - stage: 'Deploy Resources'
+  - stage: 'DeployResourcesStage'
     jobs:
-    - job: 'DeployResources'
+    - job: 'DeployResourcesJob'
       pool:
         vmImage: ubuntu-latest
 
