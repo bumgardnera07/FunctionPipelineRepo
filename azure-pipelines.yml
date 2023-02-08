@@ -51,7 +51,13 @@ steps:
               appName: '$(ArmDeploymentOutputs.functionAppName.value)'
               package: '$(System.DefaultWorkingDirectory)/**/*.zip'
               deploymentMethod: 'auto'
-
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Write your commands here
+                
+                sleep 1800
           - task: AzureFunctionApp@1
             retryCountOnTaskFailure: 10
             continueOnError: true
