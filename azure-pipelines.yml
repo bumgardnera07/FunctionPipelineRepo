@@ -62,7 +62,7 @@ steps:
             inputs:
               azureSubscription: 'gebumgar (2eb04934-401d-4233-82c4-6c80ab35d49c)'
               appType: 'functionApp'
-              appName: 'GABFUNCAPP109'
+              appName: 'GABFUNCAPP$(Build.BuildId)'
               package: '$(System.DefaultWorkingDirectory)/**/*.zip'
               deploymentMethod: 'auto'
             
