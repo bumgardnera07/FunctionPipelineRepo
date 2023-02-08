@@ -34,6 +34,13 @@ steps:
               deploymentMode: 'Complete'
               deploymentName: 'DeployPipelineTemplate'
               deploymentOutputs: 'ARMDeploymentOutputs'
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Write your commands here
+                
+                echo $(ArmDeploymentOutputs.functionAppName.value)
           - task: AzureCLI@2
             retryCountOnTaskFailure: 10
             inputs:
